@@ -13,10 +13,15 @@ docker-compose build
 docker push francescoxx/node-docker:0.0.1
 ```
 
+## TODOS
+
+- [ ] add logging (e.g. winston, ...)
+
 ## Misc
 
 - <https://github.com/FrancescoXX/docker-react>
 - <https://hub.docker.com/r/francescoxx/node-docker>
+- <https://francescociulla.com/crud-api-using-node-sequelize-postgres-and-docker>
 
 ## Contributors ✨
 

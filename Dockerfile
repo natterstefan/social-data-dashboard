@@ -15,7 +15,7 @@ RUN yarn install --frozen-lockfile --no-progress
 COPY src/ ./
 
 # expose the port
-EXPOSE 3000
+EXPOSE 3001
 
 # run the app
 CMD ["node", "."]
