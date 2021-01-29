@@ -1,13 +1,39 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 
+const sequelize = require('./util/database') // database and sequelize initializations
+const User = require('./models/users') // REQUIRED even if IDE says not used!
+
+// INITIALIZE APP WITH EXPRESS
 const app = express()
-const port = 3000
 
-app.get('/', (req, res) => {
-  console.log('hello world called!')
-  res.send('Hello World!')
+// BODYPARSER
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// Set proper Headers on Backend
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  next()
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+// ROUTES
+app.use('/dev', require('./routes/dev')) // All test routes are placed here
+app.use('/users', require('./routes/users'))
+
+const start = async () => {
+  try {
+    await sequelize.sync(
+      { force: false }, // Reset db every time
+    )
+    app.listen(process.env.EXTERNAL_PORT, () => {
+      console.log('I am running!')
+    }) // DEF in docker.compose.yml
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+start()
