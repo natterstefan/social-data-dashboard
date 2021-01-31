@@ -16,6 +16,10 @@ docker push francescoxx/node-docker:0.0.1
 ## TODOS
 
 - [ ] add logging (e.g. winston, ...)
+- [ ] add custom network on docker compose
+- [ ] add tweet model (numbers)
+- [ ] add .env file
+- [ ] integration Twitter API
 
 ## Misc
 
