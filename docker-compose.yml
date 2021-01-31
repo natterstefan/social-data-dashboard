@@ -3,7 +3,7 @@ version: '3.8'
 services:
   nsp_backend:
     container_name: nsp_backend
-    image: francescoxx/node-docker:0.0.3
+    image: francescoxx/node-docker:0.0.4
     build:
       context: .
     ports:
@@ -27,5 +27,15 @@ services:
       - POSTGRES_DB=nps_database
     volumes:
       - nps_data:/var/lib/postgresql/data
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:5.4.3
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - nsp_db
 volumes:
   nps_data: {}
+  grafana-storage: {}
