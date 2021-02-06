@@ -1,5 +1,16 @@
 # NodeJS Playground
 
+## Setup
+
+```bash
+yarn
+```
+
+## Setup Twitter Client
+
+- [ ] TODO: add details about how to set up
+  <https://github.com/FeedHive/twitter-api-client> here
+
 ## How to run the Docker Image
 
 ```bash
